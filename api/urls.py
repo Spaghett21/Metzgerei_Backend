@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import MitarbeiterAPIView, MitarbeiterDetailAPIView, ArtikelAPIView, ArtikelDetailAPIView, PferdAPIView, PferdDetailAPIView
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 
 urlpatterns = [
     path('metzgerei/mitarbeiter/', MitarbeiterAPIView.as_view(), name="mitarbeiter_list"),

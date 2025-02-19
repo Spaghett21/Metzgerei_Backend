@@ -6,7 +6,7 @@ Models erstellt:
    id (AutoIncrease)
    firstname (Char)
    lastname (Char)
-   gehalt (Decimal) Überlegung mit Float zu arbeiten laut Recherche kann dies aber zu Rechnfehlern führen)
+   gehalt (Decimal, überlegung mit Float zu arbeiten laut Recherche kann dies aber zu Rechenfehlern führen)
    schichtzeiten (Char)
    postion (Char)
 
@@ -33,3 +33,6 @@ Installed Apps sind alle wichtigen Dinge hinzugefügt
 To Do:
 Middleware
 Frontend -> Evenutell mit React erstellen?
+
+Frontend:
+https://htmx.org/
