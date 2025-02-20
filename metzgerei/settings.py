@@ -27,11 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5500',
-    'http://127.0.0.1:5500',
 
-]
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,10 +41,12 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'rest_framework_simplejwt',
+    'authapp',
                 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,11 +54,31 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'metzgerei.urls'
 
+
+CORS_ALLOW_CREDENTIALS = True 
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5500',
+    'http://127.0.0.1:5500',
+
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:5500",
+    'http://localhost:5500',
+]
+
+CSRF_COOKIE_HTTPONLY = False  # Damit das Frontend das Token lesen kann
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_SECURE = False 
+CSRF_COOKIE_SAMESITE = "LAX"  # Falls du mit anderen Domains arbeitest
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SAMESITE = "Lax"
 
 
 TEMPLATES = [

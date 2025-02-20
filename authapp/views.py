@@ -3,10 +3,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 import json
+from django.middleware.csrf import get_token
+
 
 
 def register(request):
-    if request.method == "Post":
+    if request.method == "POST":
         data = json.loads(request.body)
         username = data.get("username")
         password = data.get("password")
@@ -17,7 +19,7 @@ def register(request):
     
 
 def user_login(request):
-    if request.method == "Post":
+    if request.method == "POST":
         data = json.loads(request.body)
         username = data.get("username")
         password = data.get("password")
@@ -30,3 +32,6 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return JsonResponse({"message": "Logged out sucessfully"})
+
+def get_csrf_token(request):
+    return JsonResponse({"csrfToken": get_token(request)})
